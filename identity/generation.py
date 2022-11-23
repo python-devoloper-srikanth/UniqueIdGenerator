@@ -20,7 +20,7 @@ class GenerateUniqueID:
     def bulk_generation_of_unique_ids(self, number_of_unique_ids):
         '''
         it generates the unique ids in bulk for given number
-        when we request one million unique ids, i see some dupliates has come
+        when we request one million unique ids, i see some duplicates has come
         to avoid that, used while loop, until the condition of length of generated ids matches the given number
         it keep on calls generate unique id method
         '''
@@ -40,9 +40,11 @@ class GenerateUniqueID:
         if we go with the process method, it is little difficult to collect return arguments
         With this approach, the method is showing high performance when compared to sigle thread process (bulk generation)
 
-        Challenge : In multiple processes, the unique ids are generated independently but there is a scope to get
+        In multiple processes, the unique ids are generated independently but there is a scope to get
         duplicate ids across the process.
         but with in the process, it gives unique ids
+
+        return ids will be unique, removing duplicates
         '''
 
         with Pool(4) as p:
@@ -52,3 +54,4 @@ class GenerateUniqueID:
         [list_unique_ids.extend(items) for items in results]
 
         return set(list_unique_ids)
+
